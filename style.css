@@ -1,0 +1,657 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+
+
+*{
+  font-family: "Roboto", sans-serif;/* police du site */
+  margin: 0; padding: 0; /*retire les trucs par def */
+  box-sizing: border-box;/*inclut bord dans la taille */
+  outline: none;; border: none;/*enleve contour et bordure */
+  text-transform: capitalize ; /*pour les maj */
+  text-decoration: none;/*enleve les soulignements */
+  transition: .2s linear;/*hover etc fluides*/
+
+}
+/*variavles globales*/
+
+:root{
+  --main-color: #d3ad7f;
+  --black:#13131a;
+  --bg:#010103;
+  --border:.1rem solid rgba(255,255,255,.3);/*bordure blanche transp*/
+   
+}
+html{
+  font-size: 62.5%;
+ overflow-x: hidden; /* pas de scroll sur les côtés */
+  scroll-padding-top: 9rem ;/* espace si navbar en haut */
+  scroll-behavior: smooth; /* scroll doux quand on clique sur un lien */
+
+}
+html::-webkit-scrollbar{
+  width: .8rem;
+
+}
+html::-webkit-scrollbar-track{
+  background: transparent;
+
+}
+html::-webkit-scrollbar-thumb{
+  background: #fff;
+  border-radius:5rem ;
+
+}
+
+
+
+/*body*/
+body{
+  background: var(--bg);
+}
+.btn{
+  margin-top: 1rem;
+  display: inline-block;
+  padding: .8rem .3rem;
+  font-size: 1.7rem;
+  color: #fff;
+  background:var(--main-color) ;
+  cursor: pointer;
+
+}
+.btn:hover{
+  letter-spacing:  .2rem;
+}
+
+/*header*/
+.header{
+    background: var(--bg);
+    display: flex;/*elements en ligne*/
+align-items: center;/*centres verticalement */
+justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: var(--border);
+    position: fixed; top: 0%; left: 0%; right: 0;
+  z-index: 1000;/*toujours au dessus des autres elements */
+
+
+}
+
+.header .logo img{
+  height: 6rem;
+
+}
+/*lie,s du menu*/
+
+.header .navbar a{
+  margin: 0 1rem;
+  font-size: 1.6rem;
+  color:#fff;
+
+
+}
+.header .navbar  a:hover{
+  color: var(--main-color);
+  border-bottom: .1rem solid var(--main-color);
+padding-bottom: .5rem;
+
+}
+
+/*icones*/
+
+.header .icons div{
+  color: #fff;
+  cursor: pointer;
+  font-size: 2.5rem;
+margin-left: 2rem;
+
+
+}
+.header .icons div:hover{
+  color: var(--main-color);
+}
+#menu-btn{
+  display: none;
+
+}
+
+.header .search-form{
+  position: absolute;
+  top: 115%;right: 7%;
+  background: #fff;
+  width: 50rem;
+ height: 5rem;
+display: flex;
+align-items: center;
+transform: scaleY(0);
+transform-origin:top ;
+  transition: 0.3s ease;
+
+
+}
+
+.header .search-form.active{
+transform: scaleY(1);/*visible*/
+
+
+
+
+}
+
+.header .search-form input{
+  height: 100%;
+width: 100%;
+font-size: 1.6rem;
+color: var(--black);
+padding: 1rem;
+text-transform: none;}
+
+
+.header .search-form label{
+  cursor: pointer;
+font-size: 2.2rem;
+margin-right: 1.25rem;
+color: var(--black);
+}
+.header .search-form label:hover{
+  color: var(--main-color);
+}
+
+
+/*article de carte */
+.header .cart-items-container {
+  position: absolute;
+  top: 100%;
+  right: -100%; /* caché par défaut */
+  height: calc(100vh - 9.5rem);
+  width: 35rem;
+  background: #fff;
+  padding: 0 1.5rem;
+  transition: 0.3s ease;
+}
+
+.header .cart-items-container.active {
+  right: 0; /* devient visible */
+}
+
+
+
+
+.header .cart-items-container .cart-item{
+  position: relative;
+margin: 2rem 0;
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.header .cart-items-container .cart-item .fa-times{
+
+position: absolute;
+top: 1rem;right: 1rem;
+font-size: 2rem;
+cursor:pointer;
+color:var(--black);
+
+}
+
+.header .cart-items-container .cart-item .fa-times:hover{
+color: var(--main-color);
+}
+
+.header .cart-items-container .cart-item img{
+height: 7rem;
+
+}
+
+.header .cart-items-container .cart-item h3{
+font-size: 2rem;
+color: var(--black);
+padding-bottom: .5rem;
+}
+.header .cart-items-container .cart-item prices{
+font-size: 1.5rem;
+color: var(--main-color);
+}
+
+.header .cart-items-container .btn{
+width: 100%;
+}
+/*media */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  #menu-btn{
+  display: inline-block;
+
+}
+ .header .navbar {
+    position: absolute;
+    top: 100%;
+    right: -100%; /* caché par défaut */
+    background: #fff;
+    width: 30rem;
+   transition: 0.3s ease;
+
+  }
+
+
+  .header .navbar.active {
+   right: 0;
+  }
+
+.header .navbar a {
+    display: block;
+    margin: 1.5rem;
+    font-size: 2rem;
+   padding: .5rem;
+  color: var(--black);  }
+
+}
+
+/*home section*/
+.home{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 9%;
+ background: url(/photos/home.jpg) ;
+  background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+position: relative;
+
+}
+.home .content{
+max-width: 40rem;
+ margin-left: auto; /* pousse le contenu vers la droite */
+  margin-right: 1%; 
+}
+
+
+
+
+.home .content h3{
+font-size: 6rem;
+text-transform: uppercase;
+color:#b38b5c	;
+margin-bottom:2rem ;
+}
+
+.home .content p{
+  color: rgb(159, 157, 157);
+  font-size: 2rem;
+   line-height: 3rem;
+     margin-bottom: 2rem; 
+  
+}
+.home  .btn{
+background-color: var(--main-color);
+color:#fff;
+border-radius: 100px;
+ padding: 1.5rem 3rem;
+ display: inline-block;
+font-size: 1.8rem;
+font-weight: bold; 
+transition: 0.2s linear;
+}
+
+.home .content .btn:hover{
+  letter-spacing: 0.2rem;
+   background-color: #b38b5c;
+}
+/*about section*/
+#about {
+  scroll-margin-top: 9rem; /* pour que le scroll depuis navbar soit propre */
+}
+
+.about .row{
+background-color: var(--black);
+padding: 2rem 9%;
+display: flex;
+align-items: center; 
+gap: 2rem;   
+
+}
+ .image img{
+ width: 100%;  border-radius: 10px;
+  max-width:  45rem;
+  height: auto;                        /* garde le bon ratio */
+
+}
+.about .btn{
+background-color: var(--main-color);
+color:#fff;
+border-radius: 100px;
+padding: 1.5rem 3rem;
+display: inline-block;
+font-size: 1.8rem;
+font-weight: bold; 
+transition: 0.2s linear;
+}
+.about .btn:hover {
+  letter-spacing: 0.2rem;
+  background-color: #b38b5c;
+}
+
+.about .content p{
+ color: rgb(159, 157, 157);
+ font-size: 2rem;
+ line-height: 3rem;
+ margin-bottom: 2rem; 
+  
+}
+.about h3{
+font-size: 6rem;
+text-transform: uppercase;
+color:#b38b5c	;
+margin-bottom:2rem ;
+margin-top: 2rem;
+}
+/*section menu*/
+.menu {
+  padding: 5rem 9%;          /* espace autour de la section */
+  background: var(--black);  /* fond sombre comme les autres sections */
+  color: rgb(159, 157, 157);
+  font-size: 17px;
+}
+
+.heading{
+text-align: center;
+font-size: 5rem;
+color:#fff;
+padding-bottom: 30px;
+}
+.heading span{
+  color: var(--main-color);
+}
+.box-container{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+gap: 2.5rem;
+
+}
+.box{
+background-color: var(--black);
+border-radius:2rem ;
+text-align: center;
+padding: 30px;
+transition: 0.2s;
+
+}
+.box img{
+  width: 100%; 
+height: 20rem;
+border-radius:1rem;
+padding-bottom: 10px;
+ object-fit: cover;
+}
+.price span{
+  text-decoration: line-through;
+  color: var(--main-color);
+   font-weight: bold;
+  display: block
+  
+  
+}
+.price{
+  padding: 10px;
+  color: rgb(100, 54, 54);
+   
+}
+.box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.box .btn{
+background-color: var(--main-color);
+color:#fff;
+border-radius: 100px;
+padding: 1.5rem 3rem;
+display: inline-block;
+font-size: 1.8rem;
+font-weight: bold; 
+transition: 0.2s linear;
+}
+.box .btn:hover {
+  letter-spacing: 0.2rem;
+  background-color: #b38b5c;
+}
+/*produits*/
+.products{
+background-color: var(--black);
+padding: 30px;
+text-align: center;
+}
+.products h1{
+font-size: 50px;
+padding-bottom: 40px;
+color: #fff;
+}
+.products h1 span{
+color: var(--main-color);}
+.products .box-container{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+gap: 2.5rem;
+
+}
+.box{
+  font-size: 15px;
+background-color: var(--black);
+border-radius:2rem ;
+text-align: center;
+padding: 30px;
+transition: 0.2s;
+
+}
+.box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.box img{
+  height: 200px;
+object-fit: cover;
+border-radius: 15px;
+
+}
+.box h3{
+color: #fff;
+padding: 20px 20px;
+
+}
+.box i{
+color: goldenrod;
+padding-bottom: 15px;
+
+
+}
+.box .price{
+  color: var(--main-color);
+}
+
+/* Section reviews globale */
+.reviews {
+  background-color: var(--black); /* même fond que les autres sections */
+  padding: 5rem 9%;               /* plus d’espace autour comme les autres sections */
+  text-align: center;
+}
+
+/* Boîtes individuelles d'avis */
+.box {
+  background-color: #1a1a1a;     /* un fond un peu plus clair que --black pour ressortir */
+  padding: 2rem;                 /* espace intérieur */
+  border-radius: 1.5rem;         /* coins arrondis */
+  transition: 0.2s ease-in-out;  /* animation douce */
+}
+
+/* Animation au survol */
+.box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* ombre légère blanche */
+}
+
+/* Conteneur en grille responsive */
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2.5rem;
+}
+
+/* Image ronde des clients */
+.box img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem auto;  /* centrée et espacée du texte */
+}
+
+/* Les étoiles d'évaluation */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stars i {
+  color: gold;
+  font-size: 2rem;
+}
+
+/* Nom du client */
+.box h4 {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+/* Texte de l’avis */
+.box p {
+  font-size: 1.6rem;
+  color: #aaa;
+  line-height: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+/*formulaire contact */
+.contact{
+background-color: var(--black);
+padding:  20px;
+
+}
+
+.row{
+display: flex;
+gap: 20px;
+justify-content: center;
+flex-wrap: wrap;
+}
+.row img{
+height: auto;
+width: 200px;
+border-radius: 20px;
+
+}
+.form input,.form textarea{
+display: block;
+width: 100%;
+padding: 20px;
+border-radius: 10px;
+border: #aaa;
+ border: 1px solid #aaa;
+  margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+
+}
+.form button{
+background-color: var(--main-color);
+color: #fff;
+border-radius: 15px;
+padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.form button:hover {
+  background-color: #b38b5c;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .contact .row {
+    flex-direction: column; /* empile image + form */
+    align-items: center;    /* centre horizontalement */
+  }
+
+  .contact .image img {
+    width: 80%;             /* image plus petite */
+    margin-bottom: 2rem;    /* espace entre image et form */
+  }
+
+  .contact .form {
+    width: 100%;
+    max-width: 500px;       /* limite la largeur du formulaire */
+    padding: 0 1rem;        /* petit espace à gauche/droite */
+  }
+
+  .contact form input,
+  .contact form textarea {
+    font-size: 1.5rem;      /* texte plus lisible sur petit écran */
+  }
+
+  .contact form button {
+    font-size: 1.6rem;
+  }
+}
+/*footer*/
+
+footer{
+background-color: var(--black);
+padding: 3rem 9%;
+text-align: center;
+color: #fff;
+}
+
+footer img {
+  width: 100px;                  /* Taille raisonnable */
+  border-radius: 10px;           /* Bords arrondis */
+  margin-bottom: 1.5rem;         /* Espace entre le logo et ce qui suit */
+}
+.footer-links {
+  margin-bottom: 2rem;           /* Espace avec les autres éléments */
+}
+
+.footer-links a {
+  color: #aaa;                   /* Couleur gris clair */
+  margin: 0 1rem;                /* Espacement entre chaque lien */
+  text-decoration: none;         /* Supprime le soulignement */
+  font-size: 1.6rem;
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--main-color);      /* Change de couleur au survol */
+}
+.footer-socials {
+  margin-bottom: 2rem;
+}
+
+.footer-socials a {
+  color: #aaa;
+  font-size: 2rem;
+  margin: 0 1rem;
+  transition: 0.2s;
+}
+
+.footer-socials a:hover {
+  color: var(--main-color);
+}
+footer .copyright {
+  font-size: 1.4rem;
+  color: #777;
+}
+
