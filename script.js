@@ -1,4 +1,6 @@
-// boutons principaux (menu, recherche, panier)
+// =========================
+// 🎛️ Sélecteurs principaux
+// =========================
 let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.navbar');
 let searchBtn = document.querySelector('#search-btn');
@@ -6,6 +8,9 @@ let searchForm = document.querySelector('.search-form');
 let cartBtn = document.querySelector('#cart-btn');
 let cartItem = document.querySelector('.cart-items-container');
 
+// =========================
+// 🧭 Menu / Search / Panier
+// =========================
 menu.onclick = () => {
   navbar.classList.toggle('active');
   searchForm.classList.remove('active');
@@ -24,77 +29,72 @@ cartBtn.onclick = () => {
   searchForm.classList.remove('active');
 };
 
-// LOGIQUE POUR "ADD TO CART"
+// =========================
+// 🛒 Logique du panier
+// =========================
 let addToCartButtons = document.querySelectorAll('.btn');
 let cartContainer = document.querySelector('.cart-items-container');
 
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
+// Fonction pour ajouter un produit au panier
+function addItemToCart(image, title, price) {
+  let item = document.createElement('div');
+  item.classList.add('cart-item');
+  item.innerHTML = `
+    <span class="fas fa-times"></span>
+    <img src="${image}" alt="">
+    <div class="content">
+      <h3>${title}</h3>
+      <div class="price">${price}</div>
+    </div>
+  `;
 
-    // Trouver la .box parente (produit cliqué)
+  // Ajouter dans le panier
+  cartContainer.appendChild(item);
+
+  // 🔄 Rebrancher la croix ❌ pour supprimer
+  item.querySelector('.fa-times').addEventListener('click', () => {
+    item.remove();
+  });
+}
+
+// Événement sur chaque bouton "Add to cart"
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', e => {
+    e.preventDefault();
     let box = button.closest('.box');
     if (!box) return;
 
-    // Récupérer les infos du produit
     let image = box.querySelector('img')?.src;
     let title = box.querySelector('h3')?.innerText;
     let price = box.querySelector('.price')?.innerText;
 
-    // Créer un nouveau cart-item
-    let item = document.createElement('div');
-    item.classList.add('cart-item');
-    item.innerHTML = `
-      <span class="fas fa-times"></span>
-      <img src="${image}" alt="">
-      <div class="content">
-        <h3>${title}</h3>
-        <div class="price">${price}</div>
-      </div>
-    `;
-
-    // Ajouter au panier
-    cartContainer.appendChild(item);
-    cartItem.classList.add('active'); // ouvrir le panier
-
-    // Gérer suppression avec la croix ❌
-    item.querySelector('.fa-times').addEventListener('click', () => {
-      item.remove();
-    });
+    addItemToCart(image, title, price);
+    cartItem.classList.add('active');
   });
 });
 
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
+// =========================
+// ❌ Bouton pour fermer le panier
+// =========================
+const closeCartBtn = document.createElement('button');
+closeCartBtn.innerText = '×';
+closeCartBtn.classList.add('close-cart');
+cartContainer.prepend(closeCartBtn);
 
-    let box = button.closest('.box');
-    if (!box) return;
+closeCartBtn.addEventListener('click', () => {
+  cartItem.classList.remove('active');
+});
 
-    let image = box.querySelector('img')?.src;
-    let title = box.querySelector('h3')?.innerText;
-    let price = box.querySelector('.price')?.innerText;
-
-    let item = document.createElement('div');
-    item.classList.add('cart-item');
-    item.innerHTML = `
-      <span class="fas fa-times"></span>
-      <img src="${image}" alt="">
-      <div class="content">
-        <h3>${title}</h3>
-        <div class="price">${price}</div>
-      </div>
-    `;
-
-    // ⚠️ Ajouter à la fin du panier
-    cartContainer.appendChild(item);
-
-    // ✅ Rebrancher le bouton ❌ pour cette entrée spécifique
-    item.querySelector('.fa-times').addEventListener('click', () => {
-      item.remove();
-    });
-
-    // Facultatif : ouvrir le panier automatiquement
-    cartContainer.classList.add('active');
+// =========================
+// ✨ Effet fade-in au scroll
+// =========================
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
+  const trigger = window.innerHeight * 0.85;
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top < trigger) {
+      sec.classList.add("visible");
+    }
   });
 });

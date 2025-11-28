@@ -1,4 +1,4 @@
-mon html est juste ?<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
    <meta charset="UTF-8">
@@ -32,7 +32,6 @@ mon html est juste ?<!DOCTYPE html>
  <a href="#products">products</a>
  <a href="#reviews">reviews</a>
  <a href="#contact">contact</a>
-<a href="#blogs">blogs</a>
 
 </nav>
 <div class="search-form">
@@ -41,43 +40,8 @@ mon html est juste ?<!DOCTYPE html>
 </div>
 
 <div class="cart-items-container">
-  <div class="cart-item">
-  <span class="fas fa-times"></span>
-  <img src="photos/cart1.jpeg" alt="">
-  <div class="content">
-    <h3>cart item1</h3>
-    <div class="price">500da</div>
-  </div>
-  </div>
+   <a href="#" class="btn">Checkout Now</a>
 
-   <div class="cart-item">
-  <span class="fas fa-times"></span>
-  <img src="photos/cart2.jpeg" alt="">
-  <div class="content">
-    <h3>cart item2</h3>
-    <div class="price">700da</div>
-  </div>
-  </div>
-  
-
-
-   <div class="cart-item">
-  <span class="fas fa-times"></span>
-  <img src="photos/cart3.jpeg" alt="">
-  <div class="content">
-    <h3>cart item3</h3>
-    <div class="price">650da</div>
-  </div>
-  </div>
-
-   <div class="cart-item">
-  <span class="fas fa-times"></span>
-  <img src="photos/cart4.jpeg" alt="">
-  <div class="content">
-    <h3>cart item4</h3>
-    <div class="price">500da</div>
-  </div>
-  </div>
 </div>
 
 
@@ -87,18 +51,17 @@ mon html est juste ?<!DOCTYPE html>
 
 
 <!--section home -->
-<section class="home"  id="home">
-<div class="content">
-  <h3>Coffee Town</h3>
-  <p><strong>Welcome to your new favorite coffee spot.
-</strong> 
-Here, every cup is crafted with care, every corner invites you to relax, and every visit feels like home.
-Come for the coffee, stay for the vibes — slow down, sip, and enjoy the moment.
-</p>
-<a href="#" class="btn">Get your coffee now ! </a>
-</div>
-
+<!--section home -->
+<section class="home" id="home">
+  <div class="content">
+    <h3>Coffee Town</h3>
+    <p><strong>Welcome to your new favorite coffee spot.</strong>
+    Here, every cup is crafted with care, every corner invites you to relax, and every visit feels like home.
+    Come for the coffee, stay for the vibes — slow down, sip, and enjoy the moment.</p>
+    <a href="#" class="btn">Get your coffee now !</a>
+  </div>
 </section>
+
 
 <!--section about-->
 <section class="about"  id="about">
@@ -249,37 +212,54 @@ Come for the coffee, stay for the vibes — slow down, sip, and enjoy the moment
 </section>
 
 <!-- Contact formulaire -->
+<!-- 🧭 SUPPRIMER entièrement la section Blogs -->
+<!-- <section class="blogs" id="blogs"> ... </section> -->
+<!-- ⚡ Elle est retirée -->
+
+<!-- ✨ Nouvelle section Contact Us améliorée -->
 <section class="contact" id="contact">
-<h1 class="heading">Contact <span>us</span></h1>
+  <h1 class="heading"><span>Get</span> in Touch</h1>
 
-  <div class="row">
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <p>We'd love to hear from you. Get in touch with us for any inquiries about our coffee or services.</p>
 
-    <div class="image">
-      <img src="photos/téléchargement.jpeg" alt="Coffee Town Logo">
+      <div class="contact-details">
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>
+            <strong>Location:</strong><br>
+            Algiers, Algeria
+          </span>
+        </p>
+        <p>
+          <i class="fas fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            camelia.merniz@example.com
+          </span>
+        </p>
+        <p>
+          <i class="fas fa-phone"></i>
+          <span>
+            <strong>Phone:</strong><br>
+            +213 6 12 34 56 78
+          </span>
+        </p>
+      </div>
     </div>
 
-    <div class="form">
-      <form action="traitement.php" method="post">
-        
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
-        
-        <label for="email">Email:</label> 
-        <input type="email" id="email" name="email" placeholder="Your email" required>
-        
-        <label for="number">Phone number:</label>
-        <input type="tel" id="number" name="number" placeholder="Your phone number" required>
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-
-        <button type="submit">Send</button>
-
-      </form>
-    </div>
-
+    <form class="contact-form">
+      <input type="text" placeholder="Your Full Name" required>
+      <input type="email" placeholder="Your Email Address" required>
+      <input type="text" placeholder="Subject">
+      <textarea placeholder="Write your message here..." required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
   </div>
 </section>
+
 <!--footer-->
 <footer>
 <div>
